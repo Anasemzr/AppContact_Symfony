@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title>accueil</title>
+  <style>
+    /* Style pour la section #contacts */
+    #contacts {
+            margin-top: 20px;
+        }
+
+        #contacts table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #contacts table th,
+        #contacts table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #contacts table th {
+            background-color: #f0f0f0;
+        }
+
+        #contacts table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #contacts table tr:hover {
+            background-color: #e5e5e5;
+        }
+
+        #contacts p {
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        caption {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 0.5rem;
+            background-color: #eee;
+            border: 1px solid #ccc;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #ccc;
+            margin-bottom: 20px;
+        }
+
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="email"] {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #008CBA;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #006B8F;
+        }
+
+        .gestionContact {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav h2 {
+            margin: 0;
+        }
+
+        nav form {
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .buildDifferent{
+          background-color: #4CAF50;
+          border: 1px solid #4CAF50;
+          border-radius: 5px;
+          box-shadow: 0px 0px 5px #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+  
+
+  <nav>
+    <h2>Bienvenue M. {{ nom }}</h2>
+    <form class=buildDifferent action="ident" method="get">
+      <input type= "submit"  value="Je me déconnecte">
+    </form>
+  </nav>
+
+  <section id="contacts">
+    {% if contacts is empty %}
+      <p>Aucun contact trouvé.</p>
+    {% else %}
+      <table>
+		  <caption>Liste des contacts</caption>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+        </tr>
+        {% for contact in contacts %}
+          <tr>
+            <td>{{ contact.nom }}</td>
+            <td>{{ contact.prenom }}</td>
+            <td>{{ contact.email }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+  </section>
+  <br>
+  <br>
+  <hr>
+  <h2> Gestion des contacts</h2>
+  <br>
+  <div class="gestionContact">
+  
+    <form action="contacts_add" method="post">
+      <label for="nom">Nom :</label>
+      <input name="nom" type="text" value="" id="nom"><br><br>
+      
+      <label for="prenom">Prénom :</label>
+      <input name="prenom" type="text" value="" id="prenom"><br><br>
+      
+      <input type="hidden" name="userID" value="{{ userID }}" />
+      <input type="hidden" name="nomID" value="{{ nomID }}" />
+      <input type="hidden" name="numID" value="{{ numID }}" />
+      
+      <input type="submit" value="Ajouter un contact">
+    </form>
+    
+
+  <form action="contacts_supp" method="post">
+    <label for="nom">Nom :</label>
+      <input name="nom" type="text" value="" id="nom"><br><br>
+      
+      <label for="prenom">Prénom :</label>
+      <input name="prenom" type="text" value="" id="prenom"><br><br>
+      
+      <input type="hidden" name="userID" value="{{ userID }}" />
+      <input type="hidden" name="nomID" value="{{ nomID }}" />
+      <input type="hidden" name="numID" value="{{ numID }}" />
+    <input type= "submit"  value="Supprimer un contact">
+  </form>
+
+  </div>
+</body>
+
+</html>

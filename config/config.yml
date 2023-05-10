@@ -1,0 +1,10 @@
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: localhost
+        port: 3308
+        dbname: econtact
+        user: root
+        password:
+        charset: UTF8
+    

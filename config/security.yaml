@@ -1,0 +1,21 @@
+# config/packages/security.yaml
+
+security:
+
+    encoders:
+        App\Entity\Utilisateur:
+            algorithm: bcrypt
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
+                name: remember_me_cookie
+                secure: true
+                httponly: true

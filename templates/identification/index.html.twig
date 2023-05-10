@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>identification</title>
+  <style>
+  body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    h3 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin: 20px auto;
+      width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px #ccc;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    a {
+      display: block;
+      text-align: center;
+      color: #333;
+      margin-top: 20px;
+    }
+    #m {
+      text-align: center;
+      color: red;
+    }
+</style>
+</head>
+
+<body>
+<h3> Formulaire d'authentification </h3> 
+
+<form action="contacts" method="post">
+  <label for="nom">Nom :</label>
+  <input name="nom" type="text" value="" required><br>
+
+  <label for="num">Matricule :</label>
+  <input name="num" type="text" value="" required><br>
+
+  <input type="submit" value="soumettre">
+</form>
+
+
+<a href="inscription"> Je souhaite m'inscrire ! </a>
+<div id ="m"> </div> 
+</body></html>
